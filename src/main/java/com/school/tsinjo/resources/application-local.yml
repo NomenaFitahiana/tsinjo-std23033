@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:tsinjo-local;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  profiles:
+    active: local
+vola:
+  api:
+    key: 13e46640-889f-4d59-b45b-62f4e9dd3830  
