@@ -41,3 +41,6 @@ out/
 
 ### Mac OS ###
 .DS_Store
+
+src/main/java/com/school/tsinjo/resources/application.properties
+src/main/java/com/school/tsinjo/resources/application-local.yml

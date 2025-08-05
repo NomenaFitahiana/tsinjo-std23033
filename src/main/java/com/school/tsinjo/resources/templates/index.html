@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tsinfo</title>
+</head>
+<body>
+    <h1>Tsinfo - Fonds d'urgence</h1>
+    <form method="post" th:action="@{/don}">
+        <input type="text" name="donorEmail" placeholder="Email du donateur"/>
+        <input type="text" name="donorName" placeholder="Nom du donateur"/>
+        <input type="number" step="0.01" name="amount" placeholder="Montant"/>
+        <input type="text" name="paymentMethod" placeholder="Moyen de paiement"/>
+        <button type="submit">Faire un don</button>
+    </form>
+    <h2>Historique (ordre anti-chronologique)</h2>
+    <table border="1">
+        <tr>
+            <th>Type</th>
+            <th>Email</th>
+            <th>Nom</th>
+            <th>Date</th>
+            <th>Montant</th>
+            <th>Détails</th>
+            <th>Statut</th>
+        </tr>
+        <tr th:each="don : ${donations}">
+            <td>Don</td>
+            <td th:text="${don.donorEmail}"></td>
+            <td th:text="${don.donorName}"></td>
+            <td th:text="${#temporals.format(don.date, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${don.amount}"></td>
+            <td th:text="${don.paymentMethod}"></td>
+            <td th:text="${don.paymentStatus}"></td>
+        </tr>
+        <tr th:each="help : ${helps}">
+            <td>Aide</td>
+            <td th:text="${help.beneficiaryEmail}"></td>
+            <td th:text="${help.beneficiaryName}"></td>
+            <td th:text="${#temporals.format(help.date, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${help.amount}"></td>
+            <td th:text="${help.accidentDescription}"></td>
+            <td th:text="${help.paymentStatus}"></td>
+        </tr>
+    </table>
+</body>
+</html>
